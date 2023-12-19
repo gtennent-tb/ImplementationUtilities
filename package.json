@@ -1,0 +1,26 @@
+{
+  "name": "riff",
+  "version": "0.1.0",
+  "description": "Random scripts, tools, tricks, and hacks related to implementation should go here. Eventually we should add unit tests to them, and eventually when this is more substantial it should be productized",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/travelbank/ImplementationUtilities.git"
+  },
+  "type": "module",
+  "bin": "src/index.ts",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/travelbank/ImplementationUtilities/issues"
+  },
+  "homepage": "https://github.com/travelbank/ImplementationUtilities#readme",
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {}
+}
