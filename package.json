@@ -1,5 +1,6 @@
 {
   "name": "riff",
+  "private": true,
   "version": "0.1.0",
   "description": "Random scripts, tools, tricks, and hacks related to implementation should go here. Eventually we should add unit tests to them, and eventually when this is more substantial it should be productized",
   "main": "index.js",
@@ -20,6 +21,7 @@
   },
   "homepage": "https://github.com/travelbank/ImplementationUtilities#readme",
   "devDependencies": {
+    "@types/node": "^20.10.5",
     "typescript": "^5.3.3"
   },
   "dependencies": {}
