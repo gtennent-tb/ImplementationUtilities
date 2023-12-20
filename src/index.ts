@@ -2,6 +2,7 @@
 
 import { argv } from 'node:process';
 import { cardFeed } from './mdb-templates/cardFeed.js';
+import { generateBoilerplateEjs } from './utils/custom-expense-export/generateBoilerplateEjs.js';
 
 export interface Alias {
   name: string;
@@ -21,16 +22,18 @@ const usage =
 -------------------------------------------------------------------------------------
 riff feed
     Get a blank template for a card feed
-riff ejs
-    Generates starter EJS for given column headers (NYI)`; //todo turn this info text into code and make it programmatic
+riff ejs [fileName]
+    Generates starter EJS based on a specially-coded csv file. Must have file locally for now. (//todo spec in confluence/) (NYI)`; 
+    //todo turn this info text into code and make it programmatic
 
 console.clear();
 const inputArgs = argv;
 
-const parseArgs = (args): string => {
-  if (!args[2]) return usage; //first 2 args are just location data
+const parseArgs = async (args): Promise<string> => {
+  if (!args[2]) return usage; //first 2 args are just location data, //todo clean up
 
   const scriptName = args[2];
+  const arg1 = args[3];
 
   const alias = aliases.find((alias) => alias.name === scriptName);
 
@@ -40,6 +43,9 @@ const parseArgs = (args): string => {
     switch(functionName){
       case 'cardFeed':
         return cardFeed();
+      case 'generateBoilerplateEjs':
+        if(!arg1) return 'no filename provided';
+        return generateBoilerplateEjs(arg1);
       default:
         return `No script available with name ${scriptName}. Type 'riff' to see usage options`;
     }
@@ -48,4 +54,4 @@ const parseArgs = (args): string => {
   return `No script available with name ${scriptName}. Type 'riff' to see usage options`;
 };
 
-console.log(parseArgs(inputArgs));
+console.log(await parseArgs(inputArgs));
