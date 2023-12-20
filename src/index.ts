@@ -29,7 +29,7 @@ riff ejs [fileName]
 console.clear();
 const inputArgs = argv;
 
-const parseArgs = (args): string => {
+const parseArgs = async (args): Promise<string> => {
   if (!args[2]) return usage; //first 2 args are just location data, //todo clean up
 
   const scriptName = args[2];
@@ -54,4 +54,4 @@ const parseArgs = (args): string => {
   return `No script available with name ${scriptName}. Type 'riff' to see usage options`;
 };
 
-console.log(parseArgs(inputArgs));
+console.log(await parseArgs(inputArgs));
