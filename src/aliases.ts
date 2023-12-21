@@ -6,4 +6,5 @@ export interface Alias {
 export const aliases: Alias[] = [
   { name: 'feed', function: 'cardFeed' },
   { name: 'ejs', function: 'generateBoilerplateEjs' },
+  { name: 'sso', function: 'sso' },
 ];

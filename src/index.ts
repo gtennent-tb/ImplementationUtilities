@@ -1,18 +1,11 @@
 #!/usr/bin/env npx ts-node --esm
 
 import { argv } from 'node:process';
+import { aliases } from './aliases.js';
 import { cardFeed } from './mdb-templates/cardFeed.js';
+import { sso } from './mdb-templates/sso.js';
+
 import { generateBoilerplateEjs } from './utils/custom-expense-export/generateBoilerplateEjs.js';
-
-export interface Alias {
-  name: string;
-  function: string;
-}
-
-export const aliases: Alias[] = [
-  { name: 'feed', function: 'cardFeed' },
-  { name: 'ejs', function: 'generateBoilerplateEjs' },
-];
 
 
 const usage = 
@@ -22,6 +15,8 @@ const usage =
 -------------------------------------------------------------------------------------
 riff feed
     Get a blank template for a card feed
+riff sso
+    Get a blank template for an sso setup (Azure)
 riff ejs [fileName]
     Generates starter EJS based on a specially-coded csv file. Must have file locally for now. (//todo spec in confluence/) (NYI)`; 
     //todo turn this info text into code and make it programmatic
@@ -40,10 +35,12 @@ const parseArgs = async (args): Promise<string> => {
   if(alias){
     const functionName = alias.function;
 
-    switch(functionName){
-      case 'cardFeed':
+    switch(scriptName){
+      case 'feed':
         return cardFeed();
-      case 'generateBoilerplateEjs':
+      case 'sso':
+        return sso();
+      case 'ejs':
         if(!arg1) return 'no filename provided';
         return generateBoilerplateEjs(arg1);
       default:
