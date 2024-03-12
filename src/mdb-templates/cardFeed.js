@@ -13,13 +13,13 @@ export const cardFeed = () => {
         "status" : "enabled",
         "type" : "CorpCardSync",
         "provider" : "[bank name]"
-
-            {
+    }
+    
+    {
         "type": "integrations.corporate-card-bulk-sync",
         "data": {
             "bucket": "",
             "files": []
         }
-    }
     }`;
 };

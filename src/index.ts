@@ -4,22 +4,29 @@ import { argv } from 'node:process';
 import { aliases } from './aliases.js';
 import { cardFeed } from './mdb-templates/cardFeed.js';
 import { sso } from './mdb-templates/sso.js';
+import { cf } from './mdb-templates/cf.js';
+import { ec } from './mdb-templates/ec.js';
+import { department } from './mdb-templates/department.js';
 
 import { generateBoilerplateEjs } from './utils/custom-expense-export/generateBoilerplateEjs.js';
 
-
-const usage = 
-`
+const usage = `
 -------------------------------------------------------------------------------------
 -----------------------RAPID IMPLEMENTATION and FEED FRAMEWORK-----------------------
 -------------------------------------------------------------------------------------
 riff feed
     Get a blank template for a card feed
+riff cf
+    Get a blank template for a custom field option import
+riff department
+    Get a blank template for a department import
+riff ec
+    Get a blank template for a card feed  
 riff sso
     Get a blank template for an sso setup (Azure)
 riff ejs [fileName]
-    Generates starter EJS based on a specially-coded csv file. Must have file locally for now. (//todo spec in confluence/) (NYI)`; 
-    //todo turn this info text into code and make it programmatic
+    Generates starter EJS based on a specially-coded csv file. Must have file locally for now. (//todo spec in confluence/) (NYI)`;
+//todo turn this info text into code and make it programmatic
 
 console.clear();
 const inputArgs = argv;
@@ -32,16 +39,22 @@ const parseArgs = async (args): Promise<string> => {
 
   const alias = aliases.find((alias) => alias.name === scriptName);
 
-  if(alias){
+  if (alias) {
     const functionName = alias.function;
 
-    switch(scriptName){
+    switch (scriptName) {
       case 'feed':
         return cardFeed();
       case 'sso':
         return sso();
+      case 'cf':
+        return cf();
+      case 'ec':
+        return ec();
+      case 'department':
+        return department();
       case 'ejs':
-        if(!arg1) return 'no filename provided';
+        if (!arg1) return 'no filename provided';
         return generateBoilerplateEjs(arg1);
       default:
         return `No script available with name ${scriptName}. Type 'riff' to see usage options`;
