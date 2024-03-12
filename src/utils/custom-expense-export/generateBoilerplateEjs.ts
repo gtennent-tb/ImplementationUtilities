@@ -31,11 +31,11 @@ export const generateBoilerplateEjs = async (
   let titles: string[] = [];
 
   headers.forEach((header) => {
-    const variableName = toCamelCase(header);
+    const variableName = toCamelCase(header).replace(/\./g, ''); 
 
     if (variableName.length > 0) {
-      declarations.push(`const ${variableName} = ''; `);
-      references.push(`\${${variableName}}`);
+      declarations.push(`const ${variableName} = ''; `); //const ..... = ....;
+      references.push(`\${${variableName}}`); //`${...}`
       titles.push(header);
     }
   });
