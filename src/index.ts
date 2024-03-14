@@ -9,6 +9,7 @@ import { ec } from './mdb-templates/ec.js';
 import { department } from './mdb-templates/department.js';
 
 import { generateBoilerplateEjs } from './utils/custom-expense-export/generateBoilerplateEjs.js';
+import { hash } from './utils/hash/hash.js';
 
 const usage = `
 -------------------------------------------------------------------------------------
@@ -53,6 +54,9 @@ const parseArgs = async (args): Promise<string> => {
         return ec();
       case 'department':
         return department();
+      case 'hash':
+        if (!arg1) return 'no password provided';
+        return hash(arg1);
       case 'ejs':
         if (!arg1) return 'no filename provided';
         return generateBoilerplateEjs(arg1);
