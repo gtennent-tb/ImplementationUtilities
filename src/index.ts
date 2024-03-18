@@ -56,7 +56,8 @@ const parseArgs = async (args): Promise<string> => {
         return department();
       case 'hash':
         if (!arg1) return 'no password provided';
-        return hash(arg1);
+        hash(arg1);
+        return '';
       case 'ejs':
         if (!arg1) return 'no filename provided';
         return generateBoilerplateEjs(arg1);
