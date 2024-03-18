@@ -25,6 +25,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "csv": "^6.3.6"
+    "csv": "^6.3.6",
+    "password-hash-and-salt": "^0.1.4"
   }
 }
