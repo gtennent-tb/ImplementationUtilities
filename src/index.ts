@@ -25,6 +25,8 @@ riff ec
     Get a blank template for a card feed  
 riff sso
     Get a blank template for an sso setup (Azure)
+riff hash [input string]
+    Hashes a string
 riff ejs [fileName]
     Generates starter EJS based on a specially-coded csv file. Must have file locally for now. (//todo spec in confluence/) (NYI)`;
 //todo turn this info text into code and make it programmatic

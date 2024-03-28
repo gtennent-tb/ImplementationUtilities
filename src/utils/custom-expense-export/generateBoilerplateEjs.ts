@@ -44,11 +44,20 @@ export const generateBoilerplateEjs = async (
      is a valid templateSource for a request to api/expense-exporter
      Fundamentally we are using dependency injection where what we are 
      injecting is basically the spec for any particular custom file*/
-  return (
-    `<% rows = expenses.map((expense) => {${declarations.join(
+     const logicChunk = `<% rows = expenses.map((expense) => {${declarations.join(
       ' ',
     )} return \`${references.join(',')}\`;});%>` +
     `<% rows.unshift([${titles.map(title => `'${title}'`)}].join(',')) -%>` +
-    `<%- rows.join('\\\\n'); -%>`
+    `<%- rows.join('\\\\n'); -%>`;
+
+  return (
+    `{
+      "orgId":"",
+      "templateSource":"${logicChunk}",
+      "templateType":"ejs",
+      "useLineItems":true,
+      "useAllocations":false
+  }
+    `
   );
 };
