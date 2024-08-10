@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "csv": "^6.3.6",
-    "password-hash-and-salt": "^0.1.4"
+    "password-hash-and-salt": "^0.1.4",
+    "prettier": "^3.3.3"
   }
 }
