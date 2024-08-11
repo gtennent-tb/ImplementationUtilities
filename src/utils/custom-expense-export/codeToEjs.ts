@@ -6,5 +6,5 @@ export const codeToEjs = async () => {
   const targetFileName = customFileCodeFilename;
   const targetStream: ReadStream = fs.createReadStream(targetFileName);
   const data = await getFileContents(targetStream);
-  return `<%${data.replaceAll('\n', '').replaceAll('  ', ' ')}%>"`;
+  return `<%${data.replace(/\n/g, '').replace(/  /g, ' ')}%>`;
 };
