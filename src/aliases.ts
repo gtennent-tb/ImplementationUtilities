@@ -11,5 +11,6 @@ export const aliases: Alias[] = [
   { name: 'department', function: 'department' },
   { name: 'cf', function: 'cf' },
   { name: 'hash', function: 'hash'},
-  {name: 'test', function: 'codeToEjs'}
+  {name: 'test', function: 'codeToEjs'},
+  {name: 'store', function: 'storeReport'}
 ];

@@ -11,6 +11,7 @@ import { department } from './mdb-templates/department.js';
 import { generateBoilerplateEjs } from './utils/custom-expense-export/generateBoilerplateEjs.js';
 import { hash } from './utils/hash/hash.js';
 import { codeToEjs } from './utils/custom-expense-export/codeToEjs.js';
+import {storeReport } from './utils/custom-expense-export/storeReport.js';
 
 const usage = `
 -------------------------------------------------------------------------------------
@@ -73,6 +74,8 @@ const parseArgs = async (args): Promise<string> => {
         return generateBoilerplateEjs(arg1, (arg2 || ''));
       case 'test':
         return codeToEjs();
+      case 'store':
+        return storeReport('testorgid-66e4j6k462e45k5dwq24', '');
       default:
         return `No script available with name ${scriptName}. Type 'riff' to see usage options`;
     }
